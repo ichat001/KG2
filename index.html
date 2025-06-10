@@ -1,0 +1,92 @@
+<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>干货分享家</title>
+			<link href="https://cdn.jsdmirror.cn/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet" />
+			<link href="https://cdn.jsdmirror.cn/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+			<link href="./chat-widget.css" rel="stylesheet" />
+			<style>
+				html,
+				body,
+				#n8n-chat {
+					width: 100%;
+					height: 100%;
+				}
+			</style>
+		</head>
+		<body>
+			<script type="module">
+				import { createChat } from './chat.bundle.es.js';
+
+				(async function () {
+					const authentication = 'none';
+					let metadata;
+					if (authentication === 'n8nUserAuth') {
+						try {
+							const response = await fetch('/rest/login', {
+									method: 'GET',
+									headers: { 'browser-id': localStorage.getItem('n8n-browserId') }
+							});
+
+							if (response.status !== 200) {
+								throw new Error('Not logged in');
+							}
+
+							const responseData = await response.json();
+							metadata = {
+								user: {
+									id: responseData.data.id,
+									firstName: responseData.data.firstName,
+									lastName: responseData.data.lastName,
+									email: responseData.data.email,
+								},
+							};
+						} catch (error) {
+							window.location.href = '/signin?redirect=' + window.location.href;
+							return;
+						}
+					}
+
+					createChat({
+						mode: 'fullscreen',
+						webhookUrl: 'https://n8n-xbozhdrf.ap-southeast-1.clawcloudrun.com/webhook/3a592164-e099-4d12-be27-f86c61ae8237/chat',
+						showWelcomeScreen: false,
+						loadPreviousSession: false,
+						metadata: metadata,
+						webhookConfig: {
+							headers: {
+								'Content-Type': 'application/json',
+								'X-Instance-Id': 'eb7eacfe891c81ea5e403ef01e57892cc4475f6c4e0291fec422592a437e035a',
+							}
+						},
+						allowFileUploads: false,
+						allowedFilesMimeTypes: '',
+						defaultLanguage: 'en', // 设置默认语言为中文
+						i18n: {
+							zh: {
+								title: 'Hi there! 👋',
+								subtitle: "Start a chat. We're here to help you 24/7.",
+								footer: '',
+								getStarted: 'New Conversation',
+								inputPlaceholder: 'Type your question..',
+							},
+							en: { // 中文本地化配置
+								title: ' 😊 酷狗音乐ˇ24小时ˇ播放助理', 
+								subtitle: '', //我是南店村委会办公助理, 24x7随时为您服务·.
+								footer: '', //技术支持: 干货分享家
+								getStarted: '开始对话',
+								inputPlaceholder: '输入您的播放请求 . . .',
+							},
+						},
+						initialMessages: [
+							'Hi, 我是酷狗音乐的24小时在线播放助理, 帮你在电脑上播放歌曲或MV, 开始你的请求吧, 例如:', 
+							'笑看风云',
+							'伤心太平洋mv'
+						],
+					});
+				})();
+			</script>
+		</body>
+	</html>
