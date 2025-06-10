@@ -1,0 +1,74 @@
+/* 添加图像居中样式 */
+.chat-message-markdown img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* margin: 0 auto;  使图像居中显示 */
+}
+
+:root {
+	/* 主色调和其不同深度的阴影 */
+	--chat--color-primary: #e74266; /* 主色：常用于突出显示或按钮 */
+	--chat--color-primary-shade-50: #db4061; /* 主色的浅阴影1 */
+	--chat--color-primary-shade-100: #cf3c5c; /* 主色的浅阴影2 */
+
+	/* 次色调和其不同深度的阴影 */
+	--chat--color-secondary: #2EA146; /* 次色：用于次要强调或用户气泡 原20b69e 微95EC69*/
+	--chat--color-secondary-shade-50: #1ca08a; /* 次色的浅阴影 */
+
+	/* 常规颜色 */
+	--chat--color-white: #ffffff; /* 白色：常用于背景或字体 原ffffff 1a1a1a */
+	--chat--color-light: #ededed; /* 浅灰：用于背景 原f2f4f8 */
+	--chat--color-light-shade-50: #e6e9f1; /* 浅灰的浅阴影 */
+	--chat--color-light-shade-100: #c2c5cc; /* 浅灰的深阴影 */
+	--chat--color-medium: #d2d4d9; /* 中灰：用于分隔线或中性色 */
+	--chat--color-dark: #101330; /* 深色：用于标题或深色背景 */
+	--chat--color-disabled: #777980; /* 禁用状态颜色 */
+	--chat--color-typing: #404040; /* 用户正在输入时的颜色 */
+
+	/* 间距和圆角 */
+	--chat--spacing: 0.5rem; /* 基础间距 原1*/
+	--chat--border-radius: 0.3rem; /* 圆角半径 原0.25*/
+	--chat--transition-duration: 0.15s; /* 过渡动画时长 */
+
+	/* 聊天窗口的宽度和高度 */
+	--chat--window--width: 400px; /* 聊天窗口宽度 */
+	--chat--window--height: 600px; /* 聊天窗口高度 */
+
+	/* 头部样式 */
+	--chat--header-height: auto; /* 头部高度 */
+	--chat--header--padding: var(--chat--spacing); /* 头部内边距 */
+	--chat--header--background: var(--chat--color-dark); /* 头部背景色 */
+	--chat--header--color: var(--chat--color-light); /* 头部文字颜色 */
+	--chat--header--border-top: none; /* 头部顶部边框 */
+	--chat--header--border-bottom: none; /* 头部底部边框 */
+	--chat--heading--font-size: 1.5em; /* 标题字体大小 原2 */
+	--chat--subtitle--font-size: inherit; /* 副标题字体大小 */
+	--chat--subtitle--line-height: 1.8; /* 副标题行高 */
+
+	/* 输入框样式 */
+	--chat--textarea--height: 44px; /* 输入框高度 原50 */
+	
+	/* 自己加 */
+	/* --chat--input--font-size: 1rem; /* 输入框文字大小，例如16px */
+
+	/* 消息气泡样式 */
+	--chat--message--font-size: 0.9rem; /* 消息字体大小 原1 */
+	--chat--message--padding: var(--chat--spacing); /* 消息内边距 */
+	--chat--message--border-radius: var(--chat--border-radius); /* 消息气泡圆角 */
+	--chat--message-line-height: 1.4; /* 消息行高 原1.8*/
+	--chat--message--bot--background: var(--chat--color-white); /* 机器人消息背景色 */
+	--chat--message--bot--color: var(--chat--color-dark); /* 机器人消息文字颜色 */
+	--chat--message--bot--border: none; /* 机器人消息边框 */
+	--chat--message--user--background: var(--chat--color-secondary); /* 用户消息背景色 */
+	--chat--message--user--color: var(--chat--color-white); /* 用户消息文字颜色 */
+	--chat--message--user--border: none; /* 用户消息边框 */
+	--chat--message--pre--background: rgba(0, 0, 0, 0.05); /* 代码块消息背景 */
+
+	/* 切换按钮样式 */
+	--chat--toggle--background: var(--chat--color-primary); /* 切换按钮背景色 */
+	--chat--toggle--hover--background: var(--chat--color-primary-shade-50); /* 切换按钮悬停背景色 */
+	--chat--toggle--active--background: var(--chat--color-primary-shade-100); /* 切换按钮激活背景色 */
+	--chat--toggle--color: var(--chat--color-white); /* 切换按钮文字颜色 */
+	--chat--toggle--size: 64px; /* 切换按钮尺寸 */
+}
